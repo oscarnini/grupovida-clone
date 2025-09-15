@@ -1,0 +1,49 @@
+---
+export interface Props{
+    title:String,
+    description: String,
+    img?: string
+} 
+
+const { title, description, img } = Astro.props
+---
+
+<div class="certification relative flex flex-col items-center 
+        bg-primary/8 rounded-lg
+        shadow-xl/7 xl:shadow-xl/10 max-h-[500px]
+        transition-all delay-75 duration-300 ease-in-out
+        hover:scale-105 xl:hover:scale-110
+        ">
+    <picture class="my-7">
+        <img class="w-full h-32 object-cover" src={img.src}>
+    </picture>
+    <div class="my-10 mx-4">
+        <h3 class="text-lg text-primary text-center font-bold uppercase">
+            {title}
+        </h3>
+        <div class="oculto mt-2 h-60 overflow-y-auto relative 
+              [&::-webkit-scrollbar]:w-2
+            [&::-webkit-scrollbar-track]:bg-primary/20
+            [&::-webkit-scrollbar-thumb]:bg-primary
+                [&::-webkit-scrollbar-thumb]:rounded-full
+            [&::-webkit-scrollbar-thumb:hover]:bg-primary/70">
+            <p class="mb-4 text-sm text-secundary text-pretty inline xl:text-balance">
+                {description}
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const certifications = document.querySelectorAll('.certification');
+    
+    certifications.forEach((certificatio) => {
+        certificatio.addEventListener('mouseenter', () => {
+            certificatio.querySelector('.oculto')?.classList.replace('hidden', 'block')
+        })
+
+        certificatio.addEventListener('mouseleave', () => {
+            certificatio.querySelector('.oculto')?.classList.replace('block', 'hidden')
+        })
+    });
+</script>

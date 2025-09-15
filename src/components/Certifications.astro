@@ -1,0 +1,65 @@
+---
+import CertificationsItem from "./CertificationsItem.astro";
+
+import normexImg from '@imgs/NORMEX.png'
+import usdaImg from '@imgs/USDA.png'
+import fsscImg from '@imgs/fssc-22000.png'
+import glutenImg from '@imgs/GlutenFree.png'
+import sagarpaImg from '@imgs/Sagarpa.png'
+
+const { class:ClassName} = Astro.props
+
+const CERTIFICATIONS =[
+    {
+        title: 'Normex',
+        description: 'La Sociedad Mexicana de Normalización y Certificación S.C., '+
+        'NORMEX, es una empresa privada establecida en diciembre de 1993, '+
+        'que elabora normas NMX-NORMEX y actúa como un organismo de tercera parte, '+
+        'ofreciendo servicios de certificación. Verificación, laboratorio de pruebas '+
+        'para garantizar la independencia e imparcialidad en la evaluación de la conformidad '+
+        'de productos, procesos y sistemas, lo que con relación a la calidad garantiza la '+
+        'transparencia y proporciona confianza en el trato entre productor-consumidor '+
+        '(o cliente).',
+        img: normexImg
+    },
+    {
+        title:'USDA Organic',
+        description: 'También llamados productos ecológicos o biológicos, son productos vegetales, animales o sus' +
+                    'derivados, que se producen y elaboran con sustancia '+
+                    'naturales. En la producción de alimentos '+
+                    'orgánicos no se emplean plaguicidas ni fertilizantes de síntesis química. Están libres de hormonas, '+
+                    'antibióticos, residuos de metales pesados, sin uso de colorantes y saborizantes '+
+                    'artificiales, así como de Organismos genéticamente Modificados (OGM).',
+        img: usdaImg
+    },
+    {
+        title:'FSSC 22000 ver 5.1',
+        description:'Programa de certificación para los sistemas de seguridad alimentaria.',
+        img: fsscImg
+    },
+    {
+        title:'GLUTEN-FREE. BRCGS',
+        description:'Programa de certificación del sistema de gestión voluntario, científico y preventivo, para gestionar la producción segura de productos alimentarios sin gluten.',
+        img: glutenImg
+    },
+    {
+        title:'Orgánicos LPO (MEX)',
+        description:'Certificación y control para los productores de alimentos y productos agrícolas, que garantizan su calidad orgánica, verificando el cumplimiento de las normas de producción orgánica.',
+        img: sagarpaImg
+    },
+]
+---
+
+<section class={ClassName}>
+    <h2 class="text-primary text-5xl font-bold text-center">
+        Nuestras Certificación
+    </h2>
+    <div class="grid grid-cols-4 gap-x-6 gap-y-4 xl:gap-x-10 xl:gap-y-8 my-20">
+    {
+        CERTIFICATIONS.map((certification) => (
+            <CertificationsItem {... certification}/>
+        ))
+    }
+    </div>
+</section>
+

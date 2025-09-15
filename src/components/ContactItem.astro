@@ -1,0 +1,76 @@
+---
+const CONTACTS = [
+    {
+        country: 'Canada',
+        state: 'Ottawa',
+        phone: '330-658-1478',
+        email: 'canada-vida@grupovida.com',
+        map: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d17898.244185925!2d-75.69074481725694!3d45.42555834087893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1622547661231!5m2!1ses!2ses'
+    },
+    {
+        country: 'Mexico',
+        state: 'Tala - Huaxla',
+        phone: '384-158-1234',
+        email: 'mexico-vida@grupovida.com',
+        map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2414.0277574615225!2d-103.67874565333463!3d20.718672259378913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842604d9ab11a82d%3A0x8f19f607632d4a04!2sGrupo%20Vida%20GGB!5e0!3m2!1ses!2sus!4v1757949956063!5m2!1ses!2sus'
+    },
+    {
+        country: 'Mexico',
+        state: 'La venta',
+        phone: '897-456-3214',
+        email: 'chile-vida@grupovida.com',
+        map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2557.401911971579!2d-103.54994540066197!3d20.728819795525283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3d1f9682151%3A0x636e9a37b7533a3b!2sParque%20Industrial%20Grupo%20Vida!5e0!3m2!1ses!2sus!4v1757950020721!5m2!1ses!2sus'
+    },
+    {
+        country: 'Chile',
+        state: 'La venta',
+        phone: '159-987-4523',
+        email: '',
+        map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2557.401911971579!2d-103.54994540066197!3d20.728819795525283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3d1f9682151%3A0x636e9a37b7533a3b!2sParque%20Industrial%20Grupo%20Vida!5e0!3m2!1ses!2sus!4v1757950020721!5m2!1ses!2sus'
+    }
+]
+//
+---
+
+<section class="grid grid-cols-3 gap-4 mt-15 mx-10">
+    {
+        CONTACTS.map((contact) => (
+            <div class="bg-secundary/10 rounded-lg">
+                <h2 class="text-primary font-extrabold text-2xl text-center my-4">
+                    {contact.country}
+                </h2>
+                <p class="text-primary text-lg text-center font-bold">
+                    {contact.state}
+                </p>
+                <div class="map-container p-4">
+                    <iframe class="border-primary border-2 w-full h-[350px]"
+                        src={contact.map} >
+                    </iframe>
+                </div>
+                <li class="flex justify-evenly space-y-2">
+                    {
+                       contact.phone && (
+                        <ul class="flex">
+                            <a class="text-primary text-ms text-pretty"
+                                href={contact.phone}>
+                                    Tel: <span class="hover:text-secundary">{contact.phone}</span>
+                            </a>
+                        </ul>
+                       )
+                    }
+                    {
+                        contact.email && ( 
+                        <ul>
+                            <a class="text-primary text-ms text-pretty
+                                hover:text-secundary" 
+                                href={contact.email}>
+                                {contact.email}
+                            </a>
+                        </ul>
+                        )
+                    }
+                </li>
+            </div>
+        ))
+    }
+</section>

@@ -1,0 +1,24 @@
+---
+import ArrowIcon from '@icons/arrow-down.astro';
+import logoInicio from '@imgs/home_banner_header.jpg';
+
+const { class: className} = Astro.props;
+---
+
+<section class=`${className}`>
+    <div class="flex justify-center bg-fixed bg-cover bg-center object-cover w-full min-h-[55vh] xl:min-h-[100vh]" 
+        style={`background-image:url(${logoInicio.src})`}>
+        <div class="absolute flex flex-col justify-center items-center h-3/4 xl:h-[900px] px-22">
+            <h1 class="text-4xl px-2 py-4 xl:text-5xl text-white text-center text-pretty 
+            bg-primary/45 text-shadow-ls text-shadow-secundary font-bold rounded-xl">
+                Creamos experiencias enriquecedoras para tus sentidos, <br>
+                que te nutren y alimentan sanamente
+            </h1> 
+            <div class="flex justify-center items-center h-1/4 xl:h-1/4">
+            <a class="m-0 p-0" href="#ejes">
+                <ArrowIcon class="text-primary bg-secundary/50 size-12 animate-bounce rounded-full"/>
+            </a>
+            </div>
+        </div>
+    </div>
+</section>

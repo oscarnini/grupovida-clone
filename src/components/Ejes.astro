@@ -1,0 +1,70 @@
+---
+import EjesItem from "./EjesItem.astro";
+
+import agroImg from '@imgs/Eje-Agroindustria.png'
+import consumoImg from '@imgs/Eje-Pva.png'
+import industriaImg from '@imgs/Eje-Graneles.png'
+import especialesImg from '@imgs/Eje-Programa.png'
+import exportacionImg from '@imgs/Eje-Exportacion.png'
+
+const { class: className, id } = Astro.props;
+
+const EJES = [
+    {
+        title: 'División Agro',
+        description: 'Atendemos a la industria agropecuaria por medio del abastecimiento de ingredientes para la fabricación de alimento nutritivo y balanceado para distintos sectores: equino, ganadero, avícola, porcino y también mascotas. Asimismo, '+
+        'comercializamos semilla agrícola y granos como avena, maíz, trigo y cebada.',
+        img: agroImg.src,
+        link: 'https://grupovida.com/agroindustria'
+    },
+    {
+        title: 'División Consumo',
+        description: 'Granvita es una marca de Grupo Industrial Vida, empresa 100% mexicana, '+
+        'con más de 40 años de experiencia fabricando y comercializando productos que ofrecen una opción más natural, '+
+        'sana y nutritiva, para el consumidor, somos líderes en el mercado de Avenas en bolsa y Granolas.',
+        img: consumoImg.src,
+        link: 'https://grupovida.com/productos-de-consumo'
+    },
+    {
+        title: 'División Industrial',
+        description: 'Proveemos a las empresas de la industria alimenticia con avena y '+
+        'sus derivados como ingredientes para la fabricación de sus productos, '+
+        'cuidando siempre que cumplan con las especiﬁcaciones requeridas y las normas de '+
+        'calidad. Contamos además con una línea de diversas frutas deshidratadas, '+
+        'las cuales son usadas como materia prima para la elaboración de productos alimenticios.',
+        img: industriaImg.src,
+        link: 'https://grupovida.com/graneles'
+    },
+    {
+        title: 'Programas Especiales',
+        description: 'Atendemos las necesidades de los programas de asistencia alimenticia '+
+        'en Instituciones públicas y privadas a lo largo y ancho del país. '+
+        'Promovemos una alimentación saludable en todos los grupos sociales, '+
+        'orientando con productos que realmente ayuden a nutrir y prevenir complicaciones.',
+        img: especialesImg.src,
+        link: 'https://grupovida.com/programas-especiales'
+    },
+    {
+        title: 'División Exportación',
+        description: 'Compartimos nuestra experiencia en México con diferentes países hermanos, '+
+        'donde encontramos lazos de gran identidad con nuestra vocación de tener un mundo sano, '+
+        'bien alimentado.',
+        img: exportacionImg.src,
+        link: 'https://grupovida.com/exportacion'
+    },
+]
+---
+
+<section id={id} class=`${className}`>
+        <h2 class="text-primary text-5xl font-bold text-center">
+            Nuestros Ejes
+        </h2>
+
+    <div id="ejeitems" class="grid grid-cols-3 gap-x-6 gap-y-4 xl:gap-x-10 xl:gap-y-8 my-20">
+    {
+        EJES.map((eje) => (
+            <EjesItem {... eje} />
+        ))
+    }
+    </div>
+</section>

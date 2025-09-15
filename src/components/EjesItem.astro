@@ -1,0 +1,53 @@
+---
+export interface Props{
+    title: string,
+    description: string,
+    img?: string,
+    link?: string
+}
+
+const { title, description, img, link } = Astro.props
+---
+
+<div  class="eje-link">
+    <a href={link}>
+        <div class="flex justify-center my-6 h-16
+            hover:opacity-65">
+            <img class="scale-120" src={img}>
+        </div>
+        <h1 class="text-2xl text-secundary font-bold text-center 
+                hover:text-primary ">
+            {title}
+        </h1>
+        <p class="m-2 text-base text-pretty text-gray-600">
+            {description}
+        </p>
+    </a>
+</div>
+
+<script>
+    //const ejeId = document.querySelector('#ejeitems')
+    const ejes = document.querySelectorAll('.eje-link')
+
+    ejes.forEach(eje =>{
+        eje.addEventListener('mouseenter', (event) =>{
+            const text = eje.querySelector('.text-2xl')
+            if(text) {
+                text.classList.remove('text-secundary')
+                text.classList.add('text-primary')
+                text.classList.add('underline')
+                text.classList.add('decoration-solid')
+            }
+        })
+
+        eje.addEventListener('mouseleave', (event) =>{
+            const text = eje.querySelector('.text-2xl')
+            if(text) {
+                text.classList.remove('text-primary')
+                text.classList.remove('underline')
+                text.classList.remove('decoration-solid')
+                text.classList.add('text-secundary')
+            }
+        })
+    })
+</script>
