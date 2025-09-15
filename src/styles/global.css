@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #63a70a;
+    --color-secundary: #989898;
+
+    --color-indigo-primary: #63a70a;
+    --color-indigo-secundary: #989898;
+
+    --background-image-fondo: "url('src/imgs/home_banner_header.jpg')"
+}
