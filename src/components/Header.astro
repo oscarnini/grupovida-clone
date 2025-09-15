@@ -1,5 +1,9 @@
 ---
+import MenuIcon from '@icons/menu.astro'
+import ArrowBackUp from '@icons/arrow-back-up.astro'
+
 import logo from '@imgs/logo_g_vida.svg'
+
 
 const LINKS =[
     {
@@ -28,16 +32,22 @@ const LINKS =[
     },
     
 ]
-
-
-
 ---
-<header class="flex fixed z-1 justify-around items-center py-6 mx-auto w-full xl:w-[1120px] 
+
+<header class="flex fixed z-1 justify-around items-center md:py-6 mx-auto w-full xl:w-[1120px] 
         border-b-2 border-indigo-secundary top-0 left-0 right-0 bg-white/80 xl:rounded-xl xl:mt-2">
+    
+    <div class="bg-secundary/50 rounded-full md:hidden">
+        <button id="menuButton" class="p-2">
+            <MenuIcon class="text-white menu-icon" />
+            <ArrowBackUp class="text-white hidden arrow-back-up"/>
+        </button>
+    </div>
+
     <a class="flex-auto" href="#">
-        <img class="scale-90" src={logo.src}>
+        <img class="scale-40 md:scale-80 xl:scale-90" src={logo.src}>
     </a>
-    <nav class="flex flex-2/3 justify-center gap-x-2.5">
+    <nav class="max-md:hidden flex flex-2/3 justify-center gap-x-2.5">
         {
             LINKS.map((link) => (
             <a class="text-primary font-bold hover:text-secundary
@@ -48,4 +58,65 @@ const LINKS =[
             ))
         }
     </nav>
+
+    <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 
+        bg-white/90 shadow-lg flex-col items-center py-4 
+        transform transition-all duration-300 ease-in-out opacity-0 -translate-y-4">
+        {LINKS.map((link) => (
+            <a class="text-primary font-bold hover:text-secundary py-2 px-4 w-full text-center border-b border-gray-200 transition-colors duration-200" 
+                href={link.href}>
+                {link.name}
+            </a>
+        ))}
+    </div>
 </header>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.querySelector('.menu-icon')
+    const arrowBackUp = document.querySelector('.arrow-back-up')
+
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden')
+                arrowBackUp?.classList.remove('hidden')
+                menuIcon?.classList.add('hidden')
+                mobileMenu.classList.add('flex')
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', '-translate-y-4')
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0')
+                }, 10);
+            } else {
+                arrowBackUp?.classList.add('hidden')
+                menuIcon?.classList.remove('hidden')
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0')
+                mobileMenu.classList.add('opacity-0', '-translate-y-4')
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden')
+                    mobileMenu.classList.remove('flex')
+                }, 300);
+            }
+        });
+    
+        mobileMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        document.addEventListener('click', function() {
+            if (!mobileMenu.classList.contains('hidden')) { 
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0')
+                mobileMenu.classList.add('opacity-0', '-translate-y-4')
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden')
+                }, 300);
+            }
+        });
+    }
+});
+</script>
