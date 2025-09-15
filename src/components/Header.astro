@@ -1,0 +1,51 @@
+---
+import logo from '@imgs/logo_g_vida.svg'
+
+const LINKS =[
+    {
+        name: 'Inicio',
+        href: '/#'
+    },
+    {
+        name: 'Historia',
+        href: 'https://grupovida.com/es/nuestra-historia'
+    },
+    {
+        name: 'Nuestros Ejes',
+        href: '#'
+    },
+    {
+        name: 'Valores',
+        href: 'https://grupovida.com/es/nuestros-valores'
+    },
+    {
+        name: 'Trabaja con nosotros',
+        href: 'https://grupo-industrial-vida.pandape.computrabajo.com/'
+    },
+    {
+        name: 'Contacto',
+        href: '../contacto'
+    },
+    
+]
+
+
+
+---
+<header class="flex fixed z-1 justify-around items-center py-6 mx-auto w-full xl:w-[1120px] 
+        border-b-2 border-indigo-secundary top-0 left-0 right-0 bg-white/80 xl:rounded-xl xl:mt-2">
+    <a class="flex-auto" href="#">
+        <img class="scale-90" src={logo.src}>
+    </a>
+    <nav class="flex flex-2/3 justify-center gap-x-2.5">
+        {
+            LINKS.map((link) => (
+            <a class="text-primary font-bold hover:text-secundary
+                pr-4 border-r-2 border-indigo-secundary" 
+                href={link.href}>
+                {link.name}
+            </a>
+            ))
+        }
+    </nav>
+</header>
