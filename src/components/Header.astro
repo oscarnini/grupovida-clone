@@ -34,20 +34,23 @@ const LINKS =[
 ]
 ---
 
-<header class="flex fixed z-1 justify-around items-center md:py-6 mx-auto w-full xl:w-[1120px] 
-        border-b-2 border-indigo-secundary top-0 left-0 right-0 bg-white/80 xl:rounded-xl xl:mt-2">
+<header class="flex fixed z-1 justify-around items-center pt-4 mx-auto w-full xl:w-[1120px] 
+        border-b-2 border-indigo-secundary top-0 left-0 right-0 bg-white/80 xl:rounded-xl xl:mt-2">    
     
-    <div class="bg-secundary/50 rounded-full md:hidden">
-        <button id="menuButton" class="p-2">
+    <div class="w-20 flex justify-center">
+        <button id="menuButton" class="p-2 bg-secundary/50 rounded-full min-[900px]:hidden">
             <MenuIcon class="text-white menu-icon" />
             <ArrowBackUp class="text-white hidden arrow-back-up"/>
         </button>
     </div>
 
-    <a class="flex-auto" href="#">
-        <img class="scale-40 md:scale-80 xl:scale-90" src={logo.src}>
-    </a>
-    <nav class="max-md:hidden flex flex-2/3 justify-center gap-x-2.5">
+    <div class="flex-1">
+        <a class="contents" href="#">
+            <img class="scale-90 max-[900px]:max-h-10 justify-self-center" src={logo.src}>
+        </a>
+    </div>
+
+    <nav class="max-[900px]:hidden flex flex-2/3 justify-center gap-x-2.5">
         {
             LINKS.map((link) => (
             <a class="text-primary font-bold hover:text-secundary
@@ -59,7 +62,7 @@ const LINKS =[
         }
     </nav>
 
-    <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 
+    <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 
         bg-white/90 shadow-lg flex-col items-center py-4 
         transform transition-all duration-300 ease-in-out opacity-0 -translate-y-4">
         {LINKS.map((link) => (
