@@ -1,0 +1,128 @@
+---
+import historiaContrato from '@imgs/historia-contrato.jpg'
+import historiaEntrada from '@imgs/historia-entrada.jpg'
+import historiaCarroza from '@imgs/historia-carroza.jpg'
+import hisoriaPueblo from '@imgs/historia-pueblo.jpg'
+import Index from 'pages/index.astro'
+
+const ELEMENTS = [
+    {
+        title: 'Grupo Vida',
+        description: 'Grupo Vida nace en 1982 con la visión de ofrecer a sus consumidores una alimentación saludable a través de productos innovadores, '+
+                            'nutritivos con altos estándares de calidad, con delicioso sabor a precios competitivos.',
+        image: historiaContrato.src
+    },
+    {
+        title: '',
+        description: 'Es así, que bajo esta premisa, creamos y acercamos a todos los consumidores, el concepto y beneficios de la Granola tal y '
+        +'como se conoce hoy en día, cuando en México no existía y solo amas de casa la cocinaban en sus hogares o podía encontrarse en algunas '+
+        'tiendas naturistas para ser consumida casi exclusivamente por vegetarianos como fuente de proteínas.',
+        image: historiaEntrada.src
+    },
+    {
+        title: '',
+        description: 'La Granola Granvita se coloca como la más exitosa del mercado al crear una receta que evitaba la formación de <<clusters>> '+
+        '(hojuelas de avena pegadas entre sí durante la cocción) y desarrollamos la Granola con hojuela suelta siendo tan grande el éxito que '+
+        'otras marcas la imitaron. Además, siempre visionarios, fuimos la primera empresa en comercializar la Avena en Bolsa y con ello, ayudar '+
+        'a que el consumidor pudiera ver el producto, algo que no se lograba con el bote en el que normalmente se venden.',
+        image: historiaCarroza.src
+    },
+    {
+        title: '',
+        description: 'Finalmente, al observar que en avena instantánea no existía una opción para las personas que no pueden consumir azúcar, '+
+        'lanzamos la línea 0% azúcar logrando ser líderes en ventas dentro de este segmento con una amplia variedad de sabores y una '+
+        'presentación adecuada a cada necesidad.',
+        image: hisoriaPueblo.src
+    },
+]
+
+---
+
+<section id="history" class="m-8 scroll-mt-110 md:scroll-mt-120 lg:scroll-mt-100 xl:scroll-mt-80">
+    
+    {
+        
+    }
+    
+    {
+        ELEMENTS.map((element, index) => (
+            <div class="flex justify-center flex-col md:flex-row mb-10 animate-scroll">
+                {index %2 == 0 && (
+                    <div class="max-md:my-4">
+                        <div class="md:relative left-20 top-10
+                            outline-3 outline-primary/95 bg-white/95 shadow-primary shadow-md
+                            md:w-80 xl:w-110">
+                                {
+                                    element.title && (
+                                        <h2 class="text-primary font-extrabold capitalize text-2xl text-center pt-2">
+                                            {element.title}
+                                        </h2>
+                                    )
+                                }
+                            <p class="text-secundary max-[1280px]:text-sm text-pretty p-5 ">
+                                {element.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl contents 
+                        outline-2 outline-secundary/70 shadow-secundary shadow-xl">
+                        <img src={element.image}
+                            class="h-full md:h-85 object-cover rounded-xl">
+                    </div>
+                )}
+            </div>
+
+            <div class="flex justify-center flex-col md:flex-row mb-10 animate-scroll">
+                {index %2 == 1 && (
+                    <div class="md:relative left-20 max-md:my-4">
+                        <div class="rounded-xl contents 
+                            outline-2 outline-secundary/70 shadow-secundary shadow-xl">
+                            <img src={element.image}
+                                class="h-full md:h-85 object-cover rounded-xl">
+                        </div>
+                    </div>
+                        <div class="z-1 outline-3 outline-primary/95 bg-white/95 shadow-primary shadow-lg
+                            flex justify-center items-center
+                            md:w-80 xl:w-110">
+                                {
+                                    element.title && (
+                                        <h2 class="text-primary font-extrabold capitalize text-2xl text-center pt-2">
+                                            {element.title}
+                                        </h2>
+                                    )
+                                }
+                            <p class="text-secundary max-[1280px]:text-sm text-pretty p-5 ">
+                                {element.description}
+                            </p>
+                        </div>
+
+                    
+                )}
+            </div>
+        ))
+    }
+    
+</section>
+
+<style>
+    @keyframes show {
+        from {
+            opacity: 0;
+            scale: 60%;
+        }
+        to {
+            opacity: 1;
+            scale: 100%;
+        }
+    }
+
+    .animate-scroll{
+        view-timeline-name: --reveal;
+
+        animation-name: show;
+        animation-fill-mode: both;
+        animation-range: entry 50%;
+
+        animation-timeline: --reveal;
+    }
+</style>
