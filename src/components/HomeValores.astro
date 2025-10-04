@@ -1,0 +1,67 @@
+---
+import ValoresBanner from '@imgs/valores_banner.jpg'
+import ArrowDown from './icons/arrow-down.astro'
+import iconNosotros from '@icons/nosotros.svg'
+import iconMarca from '@icons/granvita-marca.svg'
+
+const VALORES = [
+    {
+        title: 'Nosotros',
+        description: 'Cómo se viven dentro de nuestro qué hacer.',
+        img: iconNosotros.src
+    },
+    {
+        title: 'Nuestra Marca',
+        description: 'Cómo se refleja en nuestros productos y nuestra marca hacia el exterior.',
+        img: iconMarca.src
+    },
+    ]
+---
+<section>
+    <div class="flex justify-center bg-fixed bg-cover bg-position-[830px] md:bg-center object-cover w-full min-h-dvh"
+        style={`background-image:url(${ValoresBanner.src})`}>
+       <div class="absolute flex flex-col justify-center items-center h-dvh">
+           <div class="flex justify-center items-center sm:h-1/3">
+               <h1 class="text-white text-3xl md:text-5xl lg:text-6xl font-extrabold capitalize
+                   text-shadow-lg text-shadow-primary">
+                   Compartiendo nuestros valores
+               </h1>
+           </div>
+            <div class="h-1/3">
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-primary font-bold text-2xl md:text-3xl xl:text-4xl text-center p-2 rounded-xl">
+                        Valores
+                    </h2>
+                    <p class="text-secundary font-semibold text-lg md:text-xl xl:text-2xl text-center p-2 rounded-xl">
+                        Definimos nuestros valores en dos dimensiones
+                    </p>
+                </div>
+                <div class="flex justify-evenly max-sm:flex-col max-sm:items-center my-1 sm:my-8">
+                    {
+                        VALORES.map((valor) => (
+                            <div class="bg-white/85 outline-2 outline-primary/60 rounded-md shadow-2xl shadow-secundary w-4/5 sm:w-1/3
+                                max-sm:my-4 ">
+                                <h3 class="text-lg md:text-xl xl:text-2xl text-primary font-extrabold text-center py-4">
+                                    {valor.title}
+                                </h3>
+                                <div class="flex justify-center">
+                                    <img src={valor.img} alt={valor.title}
+                                        class="h-24 w-24 object-contain"/>
+                                </div>
+                                <p class="text-secundary text-center font-bold md:text-lg p-4">
+                                    {valor.description}
+                                </p>
+                            </div>
+                        ))
+
+                    }
+                </div>
+            </div>
+            <div class="flex justify-center items-end sm:items-center h-1/3">
+                <a class="m-0 p-0" href="#valores">
+                    <ArrowDown class="text-primary bg-white/50 size-12 animate-bounce rounded-full" />
+                </a>
+            </div>
+       </div>
+    </div>
+</section>

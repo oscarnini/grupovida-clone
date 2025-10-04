@@ -1,0 +1,135 @@
+---
+import imgPasion from '@imgs/valores_pasion.jpg'
+import imgInnovacion from '@imgs/valores_innovacion.jpg'
+import imgVitalidad from '@imgs/valores_vitalidad.jpg'
+import imgConfianza from '@imgs/valores_cook.jpg'
+
+const VALORES = [
+    {
+        title: 'Pasión',
+        description: {
+            "Nosotros":"Hacemos nuestro trabajo con entrega y entusiasmo. Nos esforzamos día a día para alcanzar nuevos objetivos.",
+            "Nuestra Marca":"Nuestros productos compiten con las mejores marcas a nivel internacional, llegan a más lugares cada día y conquistan nuevos mercados.",
+        },
+        img: imgPasion.src
+    },
+    {
+        title: 'Innovación',
+        description: {
+            "Nosotros":"Estamos en constante búsqueda de hacer mejor las cosas. Aprovechamos cada oportunidad para renovarnos. Vivimos en evolución.",
+            "Nuestra Marca":"Tenemos una gran variedad de productos, no dejamos de crear e inventar nuevas y mejores formas de disfrutar la nutrición y de estar con nuestros consumidores en cada momento de su vida.",
+        },
+        img: imgInnovacion.src
+    },
+    {
+        title: 'Vitalidad',
+        description: {
+            "Nosotros":"Actuamos con responsabilidad y generamos entornos de sana convivencia. Somos honestos y nos preocupa el bienestar común.",
+            "Nuestra Marca":"Creamos cuidadosamente productos con los mejores ingredientes para que nuestros consumidores tengan la satisfacción de recibir siempre lo mejor con nuestra marca.",
+        },
+        img: imgVitalidad.src
+    },
+    {
+        title: 'Confianza',
+        description: {
+            "Nosotros":"Nos comprometemos a ofrecer productos y servicios que cumplen con los más altos estándares de calidad, garantizando la satisfacción de nuestros clientes.",
+            "Nuestra Marca":"Nuestros productos son elaborados con ingredientes seleccionados y procesos rigurosos para asegurar su excelencia y confiabilidad.",
+        },
+        img: imgConfianza.src
+    }
+]
+---
+<section id="valores" class="m-8 scroll-mt-110 md:scroll-mt-120 lg:scroll-mt-100 xl:scroll-mt-80"> 
+{
+    VALORES.map((valor, index) => (
+        <h3 class="text-center font-bold text-primary text-3xl">{valor.title}</h3>
+        <div class="flex justify-center my-10 animate-scroll">
+             {
+                index %2 == 0 && (
+                    <div class="max-md:my-4 flex flex-col md:flex-row items-center
+                    hover:scale-105 transition-all duration-300 ease-in-out">
+                        <div class="md:relative left-10 p-4
+                            rounded-2xl bg-white/95 shadow-secundary shadow-lg
+                            md:w-80 xl:w-110">
+                                {
+                                    valor.description && (
+                                        Object.entries(valor.description).map(([key, value]) => (
+                                            <div class="mb-4">
+                                                <h4 class="text-xl font-semibold text-secundary text-center mb-2">
+                                                    {key}
+                                                </h4>
+                                                <p class="text-secundary font-medium text-lg">
+                                                    {value}
+                                                </p>
+                                            </div>
+                                        ))
+                                    )
+                                }
+                        </div>
+                        <div class="rounded-xl contents 
+                            outline-2 outline-secundary/70 shadow-secundary shadow-xl">
+                            <img src={valor.img} alt={valor.title}
+                                class="h-full md:h-85 object-cover rounded-xl">
+                        </div>
+                    </div>
+                )
+             }
+             <div class="flex justify-center flex-col md:flex-row mb-10 animate-scroll">
+                {index %2 == 1 && (
+                    <div class="max-md:my-4 flex flex-col md:flex-row items-center
+                    hover:scale-105 transition-all duration-300 ease-in-out">
+                    <div class="md:relative left-20 max-md:my-4">
+                        <div class="rounded-xl contents 
+                            outline-2 outline-secundary/70 shadow-secundary shadow-xl">
+                            <img src={valor.img} alt={valor.title}
+                                class="h-full md:h-85 object-cover rounded-xl">
+                        </div>
+                    </div>
+                        <div class="md:relative left-10 p-4
+                            rounded-2xl bg-white/95 shadow-secundary shadow-lg
+                            md:w-80 xl:w-110">
+                                {
+                                    valor.description && (
+                                        Object.entries(valor.description).map(([key, value]) => (
+                                            <div class="mb-4">
+                                                <h4 class="text-xl font-semibold text-secundary text-center mb-2">
+                                                    {key}
+                                                </h4>
+                                                <p class="text-secundary font-medium text-lg">
+                                                    {value}
+                                                </p>
+                                            </div>
+                                        ))
+                                    )
+                                }
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    ))
+}
+</section>
+
+<style>
+    @keyframes show {
+        from {
+            opacity: 0;
+            scale: 60%;
+        }
+        to {
+            opacity: 1;
+            scale: 100%;
+        }
+    }
+
+    .animate-scroll{
+        view-timeline-name: --reveal;
+
+        animation-name: show;
+        animation-fill-mode: both;
+        animation-range: entry 50%;
+
+        animation-timeline: --reveal;
+    }
+</style>
